@@ -3,7 +3,7 @@ import Layout from './ui/Layout'
 import {Route, Routes } from 'react-router-dom'
 import Home from './Pages/Home'
 import Product from './Pages/Product'
-import Category from './Pages/Category'
+import Category from './Pages/Categories'
 import Profile from './Pages/Profile'
 import Cart from './Pages/Cart'
 import Favorite from './Pages/Favorite'
@@ -22,8 +22,8 @@ function App() {
         <Route index  element={<Home />} />
         <Route path='/product'element={<Product />} />
         <Route path='/product:id'element={<Product />} />
-        <Route path='/category'  element={<Category />} />
-        <Route path='/category:id'  element={<Category />} />
+        <Route path='/Categories'  element={<Category />} />
+        <Route path='/Categories:id'  element={<Category />} />
         <Route path='/profile'  element={<Profile />} />
         <Route path='/cart'  element={<Cart />} />
         <Route path='/favorite'  element={<Favorite />} />

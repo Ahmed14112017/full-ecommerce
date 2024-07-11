@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { logo } from '../assets'
 import { CiSearch } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
@@ -8,11 +8,29 @@ import { IoMdClose } from "react-icons/io";
 import Container from './Container';
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link } from 'react-router-dom';
+import { config } from '../config';
+import { getdata } from '../lib';
 
 
 
 export default function Header() {
     const [searchtext,Setsearchtext]=useState("")
+    const [Categories,setCategories]=useState([])
+    useEffect(()=>{
+      const fetchdata=async()=>{
+        const endpoint=`${config?.baseurl}/Categories`;
+        try{
+          const data=await getdata(endpoint)
+          setCategories(data); // set the fetched categories
+
+          console.log(data,"data")
+        }
+        catch(error){
+          console.error("error fetching data",error)
+        }
+      }
+      fetchdata()
+    })
     const handelsearch=(e: { target: { value: React.SetStateAction<string>; }; })=>{
         Setsearchtext(e.target.value)
     }
